@@ -1,0 +1,22 @@
+.smallIcon{
+    width: 50px;
+    display: inline;
+}
+.weatherCard{
+    padding: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.weatherBox h6{
+    height: min-content;
+    margin-bottom: 0;
+}
+.alignRight{
+    margin-left: auto;
+    padding-right: 10px;
+}
+#hourlyScrollDiv{
+    overflow-y: scroll;
+}

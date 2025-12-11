@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+.darkBG{
+    background-color: black;
+    color: white;
+}
+.lightBG{
+    background-color: gold;
+}
+.weatherBox{
+    border-radius: 15px;
+    border: 1px solid gray;
+    padding: 15px;
+    height: fit-content;
+}

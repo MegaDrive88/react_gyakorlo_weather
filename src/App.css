@@ -1,8 +1,0 @@
-.resultDiv{
-    cursor: pointer;
-    border-bottom: 1px solid darkgray;
-    word-break: break-all;
-}
-.resultDiv h6{
-    color: var(--bs-primary);
-}

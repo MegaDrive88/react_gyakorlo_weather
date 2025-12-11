@@ -1,0 +1,9 @@
+.resultDiv{
+    cursor: pointer;
+    border-top: 1px solid darkgray;
+    white-space: wrap;
+    word-break: normal; /*Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch*/
+}
+.resultDiv h6{
+    color: var(--bs-primary);
+}
