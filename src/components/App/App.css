@@ -10,4 +10,5 @@
 .dailyCardContainer{
     display: flex;
     justify-content:space-between;
+    overflow-x:auto;
 }
