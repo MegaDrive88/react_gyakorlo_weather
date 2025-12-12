@@ -13,3 +13,8 @@
     padding: 15px;
     height: fit-content;
 }
+.tileDiv{
+    height: 100%;
+    min-height: fit-content;
+    max-height: 100%;
+}

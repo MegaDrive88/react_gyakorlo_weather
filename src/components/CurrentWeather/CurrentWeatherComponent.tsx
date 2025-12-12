@@ -15,10 +15,13 @@ export default function CurrentWeatherComponent(props: {currentWeather: CurrentW
     }, [currentWeather])
     return (
         <>
-            <div className={`weatherBox col-md-6 ${currentWeather?.current.is_day == 1 ? "lightBG" : "darkBG"}`}>
-                <h5>{currentWeather?.current.time.split('T')[1]} {currentWeather?.timezone_abbreviation}</h5>
-                <img src={iconData?.image} />
-                <h4>Jelenlegi hőmérséklet: {currentWeather?.current.temperature_2m} {currentWeather?.current_units.temperature_2m}</h4>
+            <div className="col-md-6 g-0 tileDiv">
+                <h5>Jelenlegi időjárás</h5>
+                <div className={`weatherBox currentWeatherBox ${currentWeather?.current.is_day == 1 ? "lightBG" : "darkBG"}`}>
+                    <h5>{currentWeather?.current.time.split('T')[1]} {currentWeather?.timezone_abbreviation}</h5>
+                    <img src={iconData?.image} />
+                    <h4>Jelenlegi hőmérséklet: {currentWeather?.current.temperature_2m} {currentWeather?.current_units.temperature_2m}</h4>
+                </div>
             </div>
         </>
     )

@@ -3,20 +3,20 @@ import type WeatherCardData from '../../../interfaces/weather.card.data.interfac
 import { useEffect, useState } from 'react'
 import DataService from '../../../data.service'
 
-export default function HourlyWeatherCard(props: WeatherCardData){
+export default function HourlyWeatherCard(props: {data: WeatherCardData, unit:string|undefined}){
     const [iconData, setIconData] = useState<{image:string}>()
     const dataService = new DataService()
     useEffect(()=>{
-        dataService.getWeatherIconSource(props.weather_code, props.is_day).then(
+        dataService.getWeatherIconSource(props.data.weather_code, props.data.is_day).then(
             res => setIconData(res)
         )
     }, [])
     return (
         <>
-        <div className={`weatherBox weatherCard ${props.is_day == 1 ? "lightBG" : "darkBG"}`}>
+        <div className={`weatherBox weatherCard ${props.data.is_day == 1 ? "lightBG" : "darkBG"}`}>
             <img className='smallIcon' src={iconData?.image} alt="" />
-            <h6>{props.time.split("T")[1]}</h6>
-            <h6 className='alignRight'>{props.temperature_2m}</h6>
+            <h6>{props.data.time.split("T")[1]}</h6>
+            <h6 className='alignRight'>{props.data.temperature_2m} {props.unit}</h6>
         </div>
         </>
     )

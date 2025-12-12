@@ -7,6 +7,8 @@ import type HourlyWeather from '../../interfaces/hourly.weather.interface';
 import type CurrentWeather from '../../interfaces/current.weather.interface';
 import CurrentWeatherComponent from '../CurrentWeather/CurrentWeatherComponent';
 import HourlyWeatherComponent from '../HourlyWeather/HourlyWeatherComponent';
+import DailyWeatherComponent from '../DailyWeather/DailyWeatherComponent';
+import type DailyWeather from '../../interfaces/daily.weather.interface';
 
 function App() {
   const [typedLocation, setTypedLocation] = useState("");
@@ -15,6 +17,7 @@ function App() {
   const dataService = new DataService()
   const [currentWeatherData, setCurrentWeatherData] = useState<CurrentWeather>()
   const [hourlyWeatherData, setHourlyWeatherData] = useState<HourlyWeather>()
+  const [dailyWeatherData, setDailyWeatherData] = useState<DailyWeather>()
   useEffect(() => {
     const timeout = setTimeout(() => {
       axios.get<any>(`https://geocoding-api.open-meteo.com/v1/search?name=${typedLocation}&count=12&language=hu&format=json`).then(
@@ -34,6 +37,8 @@ function App() {
                   }
                   setCurrentWeatherData(tempCurrentData)
                   setHourlyWeatherData(tempHourlyData)
+                  let tempDailyData = JSON.parse(await dataService.getDailyForecastByLocation(x.latitude, x.longitude)) as DailyWeather
+                  setDailyWeatherData(tempDailyData) 
                 }}>
                 <h6>{x.name}</h6>
                 {x.admin1}, {x.country}
@@ -56,9 +61,13 @@ function App() {
           {selectedLocation?.name &&
            <div>
             <h4>{selectedLocation?.admin1}, {selectedLocation?.country}</h4>
-            <div className="row mx-0">
+            <div className="row mx-0" style={{"height": "250px"}}>
               <CurrentWeatherComponent currentWeather={currentWeatherData}/>
-              <HourlyWeatherComponent hourlyWeather={hourlyWeatherData}/>
+              <HourlyWeatherComponent hourlyWeather={hourlyWeatherData} unit={hourlyWeatherData?.hourly_units.temperature_2m}/>
+              <h5 className='g-0'>Heti előrejelzés</h5>
+              <div className='dailyCardContainer col-12 g-0'>
+              <DailyWeatherComponent dailyWeather={dailyWeatherData} unit={dailyWeatherData?.daily_units.temperature_2m_min}/>
+              </div>
             </div>
            </div>
           }

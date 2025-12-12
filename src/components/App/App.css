@@ -7,3 +7,7 @@
 .resultDiv h6{
     color: var(--bs-primary);
 }
+.dailyCardContainer{
+    display: flex;
+    justify-content:space-between;
+}
