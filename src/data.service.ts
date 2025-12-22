@@ -15,4 +15,16 @@ export default class DataService{
         return (await this.axios.get<any>(`forecast?latitude=${lat}&longitude=${lon}&daily=weather_code,temperature_2m_max,temperature_2m_min,wind_direction_10m_dominant&start_date=${new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString().split('T')[0]}&end_date=${new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]}`)).data
         //&start_date=2025-12-13$end_date
     }
+    async getMyLocation(){
+        return new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(
+            (data) => {
+                resolve([data.coords.latitude, data.coords.longitude]);
+            },
+            (err) => {
+                reject(err);
+            }
+            );
+        });
+    }
 }
