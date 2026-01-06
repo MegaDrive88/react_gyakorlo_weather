@@ -34,6 +34,7 @@ function App() {
     setDailyWeatherData(tempDailyData) 
   }
   useEffect(() => {
+    if (typedLocation == '') setMatchingLocations([])
     const timeout = setTimeout(() => {
       axios.get<any>(`https://geocoding-api.open-meteo.com/v1/search?name=${typedLocation}&count=12&language=hu&format=json`).then(
         res=>{
@@ -65,10 +66,9 @@ function App() {
   }
   return (
     <>
-      
       <div className="row">
         <div className="col-11">
-          <input name='location' type="text" placeholder='Település neve' className="form-control" value={typedLocation} onChange={(e)=>setTypedLocation(e.target.value)} />
+          <input name='location' type="text" placeholder='Település neve' style={{marginBottom:"10px"}} className="form-control" value={typedLocation} onChange={(e)=>setTypedLocation(e.target.value)} />
         </div>
         <div className="col-1 g-0">
           <button className='btn btn-primary w-100' onClick={getCurrentLocation}>

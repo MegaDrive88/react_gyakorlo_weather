@@ -4,6 +4,9 @@
     white-space: wrap;
     word-break: normal; /*Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch*/
 }
+.resultDiv:hover h6{
+    text-decoration: underline;
+}
 .resultDiv h6{
     color: var(--bs-primary);
 }
