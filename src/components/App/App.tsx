@@ -19,6 +19,7 @@ function App() {
   const [hourlyWeatherData, setHourlyWeatherData] = useState<HourlyWeather>()
   const [dailyWeatherData, setDailyWeatherData] = useState<DailyWeather>()
   useEffect(() => {
+    if (typedLocation == '') setMatchingLocations([])
     const timeout = setTimeout(() => {
       axios.get<any>(`https://geocoding-api.open-meteo.com/v1/search?name=${typedLocation}&count=12&language=hu&format=json`).then(
         res=>{
@@ -53,7 +54,7 @@ function App() {
 
   return (
     <>
-      <input name='location' type="text" placeholder='Település neve' className="form-control" value={typedLocation} onChange={(e)=>setTypedLocation(e.target.value)} />
+      <input name='location' type="text" placeholder='Település neve' style={{marginBottom:"10px"}} className="form-control" value={typedLocation} onChange={(e)=>setTypedLocation(e.target.value)} />
       <div className="row">
         <div id='results' className='col-3'>Keresési találatok:{matchingLocations}</div>
         <div className="col-9">

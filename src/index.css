@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 .darkBG{
-    background-color: black;
+    background-color: rgb(15, 0, 55);
     color: white;
 }
 .lightBG{
-    background-color: gold;
+    background-color: rgb(107, 223, 255);
 }
 .weatherBox{
     border-radius: 15px;
@@ -17,4 +17,7 @@
     height: 100%;
     min-height: fit-content;
     max-height: 100%;
+}
+h1,h4,h5{
+    margin: 15px 0 !important;
 }
