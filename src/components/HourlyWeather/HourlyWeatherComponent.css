@@ -21,3 +21,10 @@
     overflow-y: scroll;
     height: 100%;
 }
+tr{
+    justify-content:space-between !important;
+}
+td:last-child h6{
+    width: 70px;
+    text-align: right;
+}

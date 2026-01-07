@@ -15,9 +15,13 @@ export default function DailyWeatherComponent(props: {dailyWeather: DailyWeather
                                                         temperature_2m_min: dailyWeather.daily.temperature_2m_min[i],
                                                         temperature_2m_max: dailyWeather.daily.temperature_2m_max[i],
                                                         weather_code: dailyWeather.daily.weather_code[i],
-                                                        wind_direction_10m_dominant: dailyWeather.daily.wind_direction_10m_dominant[i]
+                                                        wind_direction_10m_dominant: dailyWeather.daily.wind_direction_10m_dominant[i],
+                                                        sunrise: dailyWeather.daily.sunrise[i],
+                                                        sunset: dailyWeather.daily.sunset[i],
+                                                        wind_speed_10m_mean: dailyWeather.daily.wind_speed_10m_mean[i],
+                                                        relative_humidity_2m_mean: dailyWeather.daily.relative_humidity_2m_mean[i],
                                                    }}
-                                                unit={dailyWeather.daily_units.temperature_2m_min}/>)
+                                                unit={dailyWeather.daily_units.temperature_2m_min} key={i}/>)
         }
         setDailyCards(tempCards)
     }, [dailyWeather])

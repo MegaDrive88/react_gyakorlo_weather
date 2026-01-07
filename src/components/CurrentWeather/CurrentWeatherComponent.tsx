@@ -21,6 +21,8 @@ export default function CurrentWeatherComponent(props: {currentWeather: CurrentW
                     <h5>{currentWeather?.current.time.replaceAll('-', '.').replaceAll('T', " ")} {currentWeather?.timezone_abbreviation}</h5>
                     <img src={iconData?.image} />
                     <h4>Jelenlegi hőmérséklet: {currentWeather?.current.temperature_2m} {currentWeather?.current_units.temperature_2m}</h4>
+                    <h5>Páratartalom: {currentWeather?.current.relative_humidity_2m}%</h5>
+                    <h5>Szél: <img className='inlineImage' style={{rotate: `${currentWeather?.current.wind_direction_10m! + 180}deg`}} src={currentWeather?.current.is_day ? "wind_arrow.png" : "wind_arrow_night.png"} alt="" /> {currentWeather?.current.wind_speed_10m} km/h</h5>
                 </div>
             </div>
         </>

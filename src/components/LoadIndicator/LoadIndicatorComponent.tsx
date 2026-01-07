@@ -5,7 +5,7 @@ export default function LoadIndicatorComponent(props: {visible: boolean}){
 
     return (
         <>
-        <div style={{width:"100%", height:"100%", left:0, display:"flex", alignItems:"center", justifyContent:"center", backgroundColor:"rgba(0,0,0,.3)", position:"absolute"}}>
+        <div style={{width:"100%", height:"100%", left:0, display:"flex", alignItems:"center", justifyContent:"center", backgroundColor:"rgba(0,0,0,.3)", position:"fixed"}}>
             <CircularProgress enableTrackSlot/>
         </div>
         </>

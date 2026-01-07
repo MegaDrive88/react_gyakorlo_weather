@@ -12,6 +12,10 @@ export default interface DailyWeather {
     temperature_2m_max: string;
     temperature_2m_min: string;
     wind_direction_10m_dominant: string;
+    sunrise: string;
+    sunset: string;
+    wind_speed_10m_mean: string;
+    relative_humidity_2m_mean: string
   };
   daily: {
     time: string[];
@@ -19,5 +23,9 @@ export default interface DailyWeather {
     temperature_2m_max: number[];
     temperature_2m_min: number[];
     wind_direction_10m_dominant: number[];
+    sunrise: string[];
+    sunset: string[];
+    wind_speed_10m_mean: number[];
+    relative_humidity_2m_mean: number[]
   };
 }

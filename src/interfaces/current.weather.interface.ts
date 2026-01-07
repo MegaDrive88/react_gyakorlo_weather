@@ -13,6 +13,9 @@ export default interface CurrentWeather {
     temperature_2m: string;
     weather_code: string;
     is_day: string;
+    relative_humidity_2m: string;
+    wind_speed_10m: string;
+    wind_direction_10m: string;
   };
   current: WeatherCardData;
 }

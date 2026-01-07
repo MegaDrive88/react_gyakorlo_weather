@@ -3,4 +3,7 @@ export default interface WeatherCardData{
     temperature_2m: number;
     weather_code: number
     is_day: number;
+    relative_humidity_2m: number;
+    wind_speed_10m: number;
+    wind_direction_10m: number;
 }

@@ -29,6 +29,34 @@ export default function DailyWeatherCard(props: {data: DailyWeahterCardData, uni
                     {props.data.temperature_2m_max} {props.unit}
                 </div>
             </div>
+            <table style={{textAlign:"right", borderCollapse: "separate", borderSpacing: "0 5px"}}>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img className="inlineImage" src="sunrise.png" alt="" />
+                        </td>
+                        <td>{props.data.sunrise.split('T')[1]}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img className="inlineImage" src="sunset.png" alt="" />
+                        </td>
+                        <td>{props.data.sunset.split('T')[1]}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img className="inlineImage" src="wind_arrow.png" style={{rotate: `${props.data.wind_direction_10m_dominant + 180}deg`}} alt="" />
+                        </td>
+                        <td><p style={{width: "70px", margin:0}}>{props.data.wind_speed_10m_mean} km/h</p></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img className="inlineImage" src="humidity.png" alt="" />
+                        </td>
+                        <td>{props.data.relative_humidity_2m_mean}%</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         </>
     )

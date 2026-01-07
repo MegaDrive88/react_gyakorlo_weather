@@ -13,11 +13,17 @@ export default function HourlyWeatherCard(props: {data: WeatherCardData, unit:st
     }, [])
     return (
         <>
-        <div className={`weatherBox weatherCard ${props.data.is_day == 1 ? "lightBG" : "darkBG"}`}>
-            <img className='smallIcon' src={iconData?.image} alt="" />
-            <h6>{props.data.time.replaceAll('-', '.').replace('T', ' ').split('.').splice(1).join('.')}</h6>
-            <h6 className='alignRight'>{props.data.temperature_2m} {props.unit}</h6>
-        </div>
+        <tr className={`weatherBox weatherCard ${props.data.is_day == 1 ? "lightBG" : "darkBG"}`}>
+            <td><img className='smallIcon' src={iconData?.image} alt="" /></td>
+            <td><h6>{props.data.time.replaceAll('-', '.').replace('T', ' ').split('.').splice(1).join('.')}</h6></td>
+            <td><h6>
+                <img className='inlineImage' src={props.data.is_day ? "wind_arrow.png" : "wind_arrow_night.png"} alt="" style={{rotate: `${props.data.wind_direction_10m! + 180}deg`}} /> {props.data.wind_speed_10m} km/h
+            </h6></td>
+            <td><h6>
+                <img className='inlineImage' src={props.data.is_day ? "humidity.png" : "humidity_night.png"} alt="" /> {props.data.relative_humidity_2m}%
+            </h6></td>
+            <td><h6 className='alignRight'>{props.data.temperature_2m} {props.unit}</h6></td>
+        </tr>
         </>
     )
 }

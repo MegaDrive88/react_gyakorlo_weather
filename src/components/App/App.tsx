@@ -93,7 +93,7 @@ function App() {
           {(isLocation(selectedLocation!) ?  selectedLocation.name : selectedLocation?.city) &&
            <div>
             <h4>{isLocation(selectedLocation!) ? selectedLocation?.admin1 : selectedLocation?.principalSubdivision}, {isLocation(selectedLocation!) ? selectedLocation?.country : selectedLocation?.countryName}</h4>
-            <div className="row mx-0" style={{"height": "250px"}}>
+            <div className="row mx-0" style={{"height": "320px"}}>
               <CurrentWeatherComponent currentWeather={currentWeatherData}/>
               <HourlyWeatherComponent hourlyWeather={hourlyWeatherData} unit={hourlyWeatherData?.hourly_units.temperature_2m}/>
               <h5 className='g-0'>Heti előrejelzés</h5>

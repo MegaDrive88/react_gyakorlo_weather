@@ -21,3 +21,8 @@
 h1,h4,h5{
     margin: 15px 0 !important;
 }
+.inlineImage{
+    margin-top: -2px;
+    width: 30px !important;
+    display: inline;
+}
