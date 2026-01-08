@@ -10,7 +10,7 @@ export default function HourlyWeatherCard(props: {data: WeatherCardData, unit:st
         dataService.getWeatherIconSource(props.data.weather_code, props.data.is_day).then(
             res => setIconData(res)
         )
-    }, [])
+    }, [props.data])
     return (
         <>
         <tr className={`weatherBox ${props.data.is_day == 1 ? "lightBG" : "darkBG"}`}>

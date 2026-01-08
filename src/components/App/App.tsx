@@ -66,6 +66,7 @@ function App() {
     return () => clearTimeout(timeout); 
   }, [typedLocation]);
   useEffect(()=>{
+    if (selectedLocation?.latitude == undefined || selectedLocation.longitude == undefined) return
     setWeatherDataOnClick({latitude: selectedLocation?.latitude, longitude: selectedLocation?.longitude})    
   }, [unit])
   const getCurrentLocation = () =>{
@@ -84,15 +85,9 @@ function App() {
   return (
     <>
     <LoadIndicatorComponent visible={loaderVisible!}/>
-      <div className="row">
-        <div className="col-11">
-          <input name='location' type="text" placeholder='Település neve' style={{marginBottom:"10px"}} className="form-control" value={typedLocation} onChange={(e)=>setTypedLocation(e.target.value)} />
-        </div>
-        <div className="col-1 g-0">
-          <button className='btn btn-primary w-100' onClick={getCurrentLocation}>
-            Auto ⌖
-          </button>
-        </div>
+      <div className="d-flex" style={{marginBottom:"10px"}}>
+        <input name='location' type="text" placeholder='Település neve' className="form-control" value={typedLocation} onChange={(e)=>setTypedLocation(e.target.value)} />
+        <button className='btn btn-primary ms-2' onClick={getCurrentLocation}>⌖</button>
       </div>
       <div className="row">
         <div id='results' className='col-3'>Keresési találatok:{matchingLocations}</div>
