@@ -1,5 +1,5 @@
 import './App.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import axios from "axios";
 import type Location from '../../interfaces/location.interface';
 import DataService from '../../data.service';
@@ -11,6 +11,8 @@ import DailyWeatherComponent from '../DailyWeather/DailyWeatherComponent';
 import type DailyWeather from '../../interfaces/daily.weather.interface';
 import type ReverseGeocode from '../../interfaces/reversegeocode.interface';
 import LoadIndicatorComponent from '../LoadIndicator/LoadIndicatorComponent';
+import { UnitContext } from '../../context';
+
 
 function App() {
   const [typedLocation, setTypedLocation] = useState("");
@@ -21,6 +23,7 @@ function App() {
   const [hourlyWeatherData, setHourlyWeatherData] = useState<HourlyWeather>()
   const [dailyWeatherData, setDailyWeatherData] = useState<DailyWeather>()
   const [loaderVisible, setLoaderVisible] = useState<boolean>(false)
+  const {unit, setUnit} = useContext<any>(UnitContext)
   const setWeatherDataOnClick = async (x:any) =>{
     setLoaderVisible(true)
     let tempCurrentData = JSON.parse(await dataService.getCurrentWeatherByLocation(x.latitude, x.longitude)) as CurrentWeather                
@@ -38,6 +41,9 @@ function App() {
     setDailyWeatherData(tempDailyData) 
     setLoaderVisible(false)
   }
+  useEffect(()=>{
+    setLoaderVisible(false)
+  })
   useEffect(() => {
     if (typedLocation == '') setMatchingLocations([])
     const timeout = setTimeout(() => {
@@ -59,7 +65,9 @@ function App() {
     }, 300);
     return () => clearTimeout(timeout); 
   }, [typedLocation]);
-  
+  useEffect(()=>{
+    setWeatherDataOnClick({latitude: selectedLocation?.latitude, longitude: selectedLocation?.longitude})    
+  }, [unit])
   const getCurrentLocation = () =>{
     dataService.getMyLocation().then(
       async (data:any)=>{
@@ -91,8 +99,12 @@ function App() {
         <div className="col-9">
           <h2>{isLocation(selectedLocation!) ?  selectedLocation.name : selectedLocation?.city}</h2>
           {(isLocation(selectedLocation!) ?  selectedLocation.name : selectedLocation?.city) &&
-           <div>
+           <div>   
             <h4>{isLocation(selectedLocation!) ? selectedLocation?.admin1 : selectedLocation?.principalSubdivision}, {isLocation(selectedLocation!) ? selectedLocation?.country : selectedLocation?.countryName}</h4>
+            Mértékegység: <select name="" id="unit-selector" value={unit} onChange={(e)=>setUnit((e.target as any).value)} style={{outline:0}}>
+              <option value="celsius">°C</option>
+              <option value="fahrenheit">°F</option>
+            </select>
             <div className="row mx-0" style={{"height": "320px"}}>
               <CurrentWeatherComponent currentWeather={currentWeatherData}/>
               <HourlyWeatherComponent hourlyWeather={hourlyWeatherData} unit={hourlyWeatherData?.hourly_units.temperature_2m}/>

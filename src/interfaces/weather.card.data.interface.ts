@@ -6,4 +6,6 @@ export default interface WeatherCardData{
     relative_humidity_2m: number;
     wind_speed_10m: number;
     wind_direction_10m: number;
+    rain: number;
+    snowfall: number;
 }

@@ -7,5 +7,7 @@ export default interface DailyWeahterCardData{
     sunrise: string;
     sunset: string;
     wind_speed_10m_mean: number;
-    relative_humidity_2m_mean: number
+    relative_humidity_2m_mean: number;
+    rain_sum: number;
+    snowfall_sum: number;
 }

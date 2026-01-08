@@ -14,6 +14,8 @@ export default interface HourlyWeather {
     relative_humidity_2m: string;
     wind_speed_10m: string;
     wind_direction_10m: string;
+    rain: string;
+    snowfall: string;
   };
   hourly: {
     time: string[];
@@ -23,5 +25,7 @@ export default interface HourlyWeather {
     relative_humidity_2m: number[];
     wind_speed_10m: number[];
     wind_direction_10m: number[];
+    rain: number[];
+    snowfall: number[];
   };
 }

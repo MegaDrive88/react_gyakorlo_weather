@@ -17,6 +17,8 @@ export default function HourlyWeatherComponent(props: {hourlyWeather: HourlyWeat
                                                      relative_humidity_2m: hourlyWeather.hourly.relative_humidity_2m[i],
                                                      wind_direction_10m: hourlyWeather.hourly.wind_direction_10m[i],
                                                      wind_speed_10m: hourlyWeather.hourly.wind_speed_10m[i],
+                                                     snowfall: hourlyWeather.hourly.snowfall[i],
+                                                     rain: hourlyWeather.hourly.rain[i],
                                                     }}
                                               unit={hourlyWeather.hourly_units.temperature_2m} key={i}/>)
         }
@@ -25,10 +27,10 @@ export default function HourlyWeatherComponent(props: {hourlyWeather: HourlyWeat
     }, [hourlyWeather])
     return (
         <>
-        <div className="col-md-6 tileDiv">
+        <div className="col-md-7 tileDiv">
             <h5>Óránkénti előrejelzés</h5>
             <div id='hourlyScrollDiv'>
-                <table style={{width: "100%"}}>
+                <table style={{width: "100%"}} className='hourlyTable'>
                 <tbody>
                 {hourlyCards}
                 </tbody>

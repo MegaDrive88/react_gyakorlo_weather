@@ -55,6 +55,12 @@ export default function DailyWeatherCard(props: {data: DailyWeahterCardData, uni
                         </td>
                         <td>{props.data.relative_humidity_2m_mean}%</td>
                     </tr>
+                    <tr>
+                        <td>
+                            <img className="rainimg" src={props.data.snowfall_sum != 0 ? "snow.png" : "rain.png"} alt="" />
+                        </td>
+                        <td>{props.data.snowfall_sum != 0 ? props.data.snowfall_sum : props.data.rain_sum} {props.data.snowfall_sum != 0 ? "cm" : "mm"}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

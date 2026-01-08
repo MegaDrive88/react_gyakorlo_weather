@@ -15,7 +15,7 @@ export default function CurrentWeatherComponent(props: {currentWeather: CurrentW
     }, [currentWeather])
     return (
         <>
-            <div className="col-md-6 g-0 tileDiv">
+            <div className="col-md-5 g-0 tileDiv">
                 <h5>Jelenlegi időjárás</h5>
                 <div className={`weatherBox currentWeatherBox ${currentWeather?.current.is_day == 1 ? "lightBG" : "darkBG"}`}>
                     <h5>{currentWeather?.current.time.replaceAll('-', '.').replaceAll('T', " ")} {currentWeather?.timezone_abbreviation}</h5>

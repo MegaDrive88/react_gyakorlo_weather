@@ -20,6 +20,8 @@ export default function DailyWeatherComponent(props: {dailyWeather: DailyWeather
                                                         sunset: dailyWeather.daily.sunset[i],
                                                         wind_speed_10m_mean: dailyWeather.daily.wind_speed_10m_mean[i],
                                                         relative_humidity_2m_mean: dailyWeather.daily.relative_humidity_2m_mean[i],
+                                                        rain_sum: dailyWeather.daily.rain_sum[i],
+                                                        snowfall_sum: dailyWeather.daily.snowfall_sum[i],
                                                    }}
                                                 unit={dailyWeather.daily_units.temperature_2m_min} key={i}/>)
         }
